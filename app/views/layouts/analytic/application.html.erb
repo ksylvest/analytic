@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %> | Analytic</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_include_tag 'analytic/application' %>
+  <%= stylesheet_link_tag 'analytic/application' %>
+  <%= favicon_link_tag 'analytic/icon.svg', type: 'image/svg+xml' %>
+</head>
+<body class="bg-slate-50">
+
+  <header class="bg-indigo-600 text-white py-2">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between">
+        <nav class="flex gap-2">
+          <%= link_to analytic.root_path, class: "flex gap-2 rounded items-center px-3 py-2 font-semibold hover:bg-indigo-800" do %>
+            <%= tag.i class: "fa-solid fa-gauge" %>
+            Analytic
+          <% end %>
+        </nav>
+        <nav class="flex gap-2">
+          <%= link_to analytic.root_path, class: "flex gap-2 rounded items-center px-3 py-2 hover:bg-indigo-800" do %>
+            <%= tag.i class: "fa-solid fa-house" %>
+            Dashboard
+          <% end %>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <%= yield %>
+  </main>
+</body>
+</html>
