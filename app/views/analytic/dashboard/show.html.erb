@@ -1,0 +1,131 @@
+<%- provide(:title, @dashboard.name) -%>
+
+<div class="space-y-4">
+  <div class="pills">
+    <%= link_to 'All', analytic.dashboard_path, class: "pill #{@dashboard.period.nil? ? 'pill--active' : 'pill--default'}" %>
+    <%= link_to '24 hours', analytic.dashboard_path(period: '24h'), class: "pill #{@dashboard.period.eql?('24h') ? 'pill--active' : 'pill--default'}" %>
+    <%= link_to '7 days', analytic.dashboard_path(period: '7d'), class: "pill #{@dashboard.period.eql?('7d') ? 'pill--active' : 'pill--default'}" %>
+    <%= link_to '4 weeks', analytic.dashboard_path(period: '4w'), class: "pill #{@dashboard.period.eql?('4w') ? 'pill--active' : 'pill--default'}" %>
+    <%= link_to '12 months', analytic.dashboard_path(period: '12m'), class: "pill #{@dashboard.period.eql?('12m') ? 'pill--active' : 'pill--default'}" %>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= fa_icon_tag("fa-solid fa-users") %>
+          Visitors
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <div class="stat">
+            <%= number_with_delimiter @dashboard.visitors.count %>
+            <%= delta_tag(@dashboard.visitors.delta) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= fa_icon_tag("fa-solid fa-globe") %>
+          Sessions
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <div class="stat">
+            <%= number_with_delimiter @dashboard.sessions.count %>
+            <%= delta_tag(@dashboard.sessions.delta) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= fa_icon_tag("fa-solid fa-eye") %>
+          Views
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <div class="stat">
+            <%= number_with_delimiter @dashboard.views.count %>
+            <%= delta_tag(@dashboard.views.delta) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <div class="card__title">
+        <%= tag.i class: "fa-solid fa-file-code" %>
+        Pages
+      </div>
+    </div>
+    <div class="card__content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Host</th>
+            <th scope="col">Path</th>
+            <th scope="col">Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- @dashboard.current.pages.each do |(host, path, views)| -%>
+            <tr>
+              <td><%= host %></td>
+              <td><%= path %></td>
+              <td><%= number_with_delimiter views %></td>
+            </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-file-code" %>
+          Visitors
+        </div>
+      </div>
+      <div class="card__content">
+        <%= react(component: "Chart", props: { entries: @dashboard.visitors_chart.entries }) %>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-globe" %>
+          Sessions
+        </div>
+      </div>
+      <div class="card__content">
+        <%= react(component: "Chart", props: { entries: @dashboard.sessions_chart.entries }) %>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-eye" %>
+          Views
+        </div>
+      </div>
+      <div class="card__content">
+        <%= react(component: "Chart", props: { entries: @dashboard.views_chart.entries }) %>
+      </div>
+    </div>
+  </div>
+</div>

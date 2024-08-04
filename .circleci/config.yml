@@ -1,0 +1,69 @@
+version: 2.1
+
+commands:
+  codeclimate:
+    steps:
+      - run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc
+          chmod +x ./cc
+          ./cc format-coverage -t simplecov coverage/coverage.json
+          ./cc upload-coverage
+          rm ./cc
+
+orbs:
+  ruby: circleci/ruby@2.3.0
+
+executors:
+  default:
+    docker:
+      - image: cimg/ruby:3.3.5
+      - image: cimg/postgres:17.0
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_HOST_AUTH_METHOD: trust
+    environment:
+      CI: on
+      PGHOST: localhost
+
+jobs:
+  doc:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: bundle exec yard doc
+  rspec:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
+      - run: bundle exec rails db:test:prepare
+      - ruby/rspec-test
+      - codeclimate
+  rubocop:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check
+  release:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: bundle exec rake release
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - doc
+      - rspec
+      - rubocop
+      - release:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
