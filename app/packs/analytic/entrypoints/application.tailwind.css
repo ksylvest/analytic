@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .stat {
+    @apply flex gap-2 justify-between items-center;
+  }
+
+  .delta {
+    @apply font-normal flex gap-2 items-center;
+  }
+
+  .delta--neutral {
+    @apply text-slate-400;
+  }
+
+  .delta--positive {
+    @apply text-emerald-600;
+  }
+
+  .delta--negative {
+    @apply text-rose-600;
+  }
+
+  .pills {
+    @apply inline-flex gap-2 bg-slate-100 border-slate-200 rounded-full text-slate-600;
+  }
+
+  .pill {
+    @apply flex items-center justify-center gap-2 rounded-full px-6 py-2;
+  }
+
+  .pill--default {
+    @apply bg-slate-100 font-medium hover:bg-slate-200 hover:text-slate-800;
+  }
+
+  .pill--active {
+    @apply bg-white shadow font-semibold text-slate-800;
+  }
+
+  .card {
+    @apply shadow-md rounded bg-white;
+  }
+
+  .card__header {
+    @apply px-5 py-4 border-b border-slate-200;
+  }
+
+  .card__footer {
+    @apply px-5 py-4 border-t border-slate-200;
+  }
+
+  .card__content {
+    @apply px-5 py-4;
+  }
+
+  .card__title {
+    @apply uppercase text-slate-600 font-semibold text-sm flex gap-2 items-center;
+  }
+
+  .card__value {
+    @apply text-slate-800 font-extrabold text-lg;
+  }
+
+  .cards {
+    @apply grid gap-4 grid-cols-1 md:grid-cols-3;
+  }
+
+  .table {
+    @apply w-full divide-y divide-slate-200;
+  }
+
+  .table tbody {
+    @apply divide-y divide-slate-200;
+  }
+
+  .table td {
+    @apply px-3 py-2 text-left;
+  }
+
+  .table th {
+    @apply px-3 py-2 text-left;
+  }
+
+  .table td:first-child {
+    @apply pl-0;
+  }
+
+  .table td:last-child {
+    @apply pr-0;
+  }
+
+  .table th:first-child {
+    @apply pl-0;
+  }
+
+  .table th:last-child {
+    @apply pr-0;
+  }
+}

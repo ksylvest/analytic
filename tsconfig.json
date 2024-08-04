@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    /* Base */
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+
+    /* Bundling */
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "baseUrl": "./app/packs",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}

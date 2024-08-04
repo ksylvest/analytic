@@ -1,0 +1,12 @@
+/.bundle/
+/.yardoc/
+/app/assets/builds/
+/coverage/
+/doc/
+/log/*.log
+/pkg/
+/tmp/
+/spec/dummy/log/*.log
+/spec/dummy/storage/
+/spec/dummy/tmp/
+/node*
