@@ -1,0 +1,84 @@
+<%- provide(:title, @dashboard.name) %>
+
+<div class="space-y-4">
+  <div class="flex gap-2">
+    <%= link_to 'Today', analytic.dashboard_path(period: 'today'), class: 'pill' %>
+    <%= link_to 'Yesterday', analytic.dashboard_path(period: 'yesterday'), class: 'pill' %>
+    <%= link_to 'Week', analytic.dashboard_path(period: 'week'), class: 'pill' %>
+    <%= link_to 'Month', analytic.dashboard_path(period: 'month'), class: 'pill' %>
+    <%= link_to 'Year', analytic.dashboard_path(period: 'year'), class: 'pill' %>
+  </div>
+
+  <div class="grid grid-flow-col justify-stretch gap-4">
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-users" %>
+          Visitors
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <%= number_with_delimiter @dashboard.distinct_visitors_count %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-globe" %>
+          Sessions
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <%= number_with_delimiter @dashboard.distinct_sessions_count %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__header">
+        <div class="card__title">
+          <%= tag.i class: "fa-solid fa-eye" %>
+          Views
+        </div>
+      </div>
+      <div class="card__content">
+        <div class="card__value">
+          <%= number_with_delimiter @dashboard.count %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <div class="card__title">
+        <%= tag.i class: "fa-solid fa-file-code" %>
+        Pages
+      </div>
+    </div>
+    <div class="card__content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Host</th>
+            <th scope="col">Path</th>
+            <th scope="col">Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- @dashboard.pages.each do |(host, path, views)| -%>
+            <tr>
+              <td><%= host %></td>
+              <td><%= path %></td>
+              <td><%= number_with_delimiter views %></td>
+            </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
