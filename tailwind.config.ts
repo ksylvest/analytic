@@ -1,10 +1,10 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss";
 
-module.exports = {
+export default {
   content: [
     "./app/**/*.html.*",
     "./app/helpers/**/*.rb",
     "./app/**/*.tsx",
     "./app/**/*.jsx",
   ],
-};
+} satisfies Config;
