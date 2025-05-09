@@ -16,8 +16,8 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.3.5
-      - image: cimg/postgres:17.0
+      - image: cimg/ruby:3.4.3
+      - image: cimg/postgres:17.5
         environment:
           POSTGRES_USER: circleci
           POSTGRES_HOST_AUTH_METHOD: trust
