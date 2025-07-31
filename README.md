@@ -5,8 +5,6 @@
 [![GitHub](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/ksylvest/analytic)
 [![Yard](https://img.shields.io/badge/docs-site-blue.svg)](https://analytic.ksylvest.com)
 [![CircleCI](https://img.shields.io/circleci/build/github/ksylvest/analytic)](https://circleci.com/gh/ksylvest/analytic)
-[![CodeClimate Maintainability](https://api.codeclimate.com/v1/badges/005074b4a948038893a9/maintainability)](https://codeclimate.com/github/ksylvest/analytic/maintainability)
-[![CodeClimate Test Coverage](https://api.codeclimate.com/v1/badges/005074b4a948038893a9/test_coverage)](https://codeclimate.com/github/ksylvest/analytic/test_coverage)
 
 ![Demo](https://raw.githubusercontent.com/ksylvest/analytic/refs/heads/main/demo.png)
 
