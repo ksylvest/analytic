@@ -18,7 +18,7 @@
     "@visx/shape": "^4.0.0",
     "esbuild": "^0.28.1",
     "react": "^18.3.1",
-    "react-dom": "^19.2.6",
+    "react-dom": "^19.2.7",
     "tailwindcss": "^4.2.0",
     "typescript": "^6.0.3"
   },
