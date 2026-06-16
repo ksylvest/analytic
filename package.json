@@ -10,7 +10,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@tailwindcss/cli": "^4.3.0",
     "@visx/axis": "^3.12.0",
-    "@visx/gradient": "^3.12.0",
+    "@visx/gradient": "^4.0.0",
     "@visx/grid": "^3.12.0",
     "@visx/group": "^3.12.0",
     "@visx/responsive": "^3.12.0",
