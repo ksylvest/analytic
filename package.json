@@ -4,7 +4,7 @@
     "build:css": "tailwindcss --input ./app/packs/analytic/entrypoints/application.tailwind.css --output ./app/assets/builds/analytic/application.css"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.3.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@fortawesome/fontawesome-svg-core": "^7.3.0",
     "@fortawesome/free-regular-svg-icons": "^7.3.0",
     "@fortawesome/free-solid-svg-icons": "^7.3.0",
