@@ -8,7 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
     "@fortawesome/free-regular-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
-    "@tailwindcss/cli": "^4.3.2",
+    "@tailwindcss/cli": "^4.3.3",
     "@visx/axis": "^4.0.0",
     "@visx/gradient": "^4.0.0",
     "@visx/grid": "^4.0.0",
